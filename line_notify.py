@@ -24,4 +24,4 @@ class LineNotify:
 if __name__ == '__main__':
     bot = LineNotify(access_token='WNV9a94MM1TG8FBlziuWodI2zTphlnmzhzcGK9Jqu5Z')
 
-    bot.send_message(message='こんにちは')
+    bot.send_message(message='hello')
