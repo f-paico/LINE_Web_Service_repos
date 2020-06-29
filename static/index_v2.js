@@ -13,6 +13,12 @@ function showCalendar(year, month){
     sec.innerHTML = calendarHtml
     console.log(sec.innerHTML)
     document.querySelector('#calendar').appendChild(sec)
+
+    month++;
+    if (month > 12){
+      year++;
+      month = 1
+    }
   }
 }
 
