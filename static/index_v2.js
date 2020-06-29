@@ -11,7 +11,6 @@ function showCalendar(year, month){
     let calendarHtml = createCalendar(year, month)
     let sec = document.createElement('section')
     sec.innerHTML = calendarHtml
-    console.log(sec.innerHTML)
     document.querySelector('#calendar').appendChild(sec)
     month++;
     if (month > 12){
