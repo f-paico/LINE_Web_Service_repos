@@ -1,7 +1,7 @@
 const weeks = ['日', '月' ,'火' ,'水' ,'木' ,'金' ,'土']
 const date = new Date()
-const year = date.getFullYear()
-const month = date.getMonth() + 1
+let year = date.getFullYear()
+let month = date.getMonth() + 1
 const config = {
   show: 3,
 }
