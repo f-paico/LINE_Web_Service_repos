@@ -8,8 +8,8 @@ const config = {
 
 function showCalendar(year, month){
   for (i = 0; i < config.show; i++){
-    const calendarHtml = createCalendar(year, month)
-    const sec = document.createElement('section')
+    let calendarHtml = createCalendar(year, month)
+    let sec = document.createElement('section')
     sec.innerHTML = calendarHtml
     console.log(sec.innerHTML)
     document.querySelector('#calendar').appendChild(sec)
