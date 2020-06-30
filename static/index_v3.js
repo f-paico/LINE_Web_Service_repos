@@ -61,7 +61,7 @@ function createCalendar(year, month){
                 calendarHtml += '<td class="is-disabled">' + num + '</td>'
                 dayCount++;
             } else{
-                calendarHtml += `<td class="calendar_td" data-date="${year}/${month}/${dayCount}">${dayCount}</td>`
+                calendarHtml += '<td>' + dayCount + '</td>'
                 dayCount++;
             }
         }
@@ -100,11 +100,6 @@ function moveCalendar(e){
 
 document.querySelector('#prev').addEventListener('click', moveCalendar)
 document.querySelector('#next').addEventListener('click', moveCalendar)
-
-document.querySelector('.calendar_td').addEventListener('click', function(e){
-    alert('クリックした日付は'+ e.target.dataset.date + 'です')
-})
-
 
 showCalendar(year, month)
 
