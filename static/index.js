@@ -12,6 +12,9 @@ function showCalendar(year, month){
         const sec = document.createElement('section')
         sec.innerHTML = calendarHtml
         document.querySelector('#calendar').appendChild(sec)
+        document.querySelector('.calendar_td').addEventListener('click', function(e){
+            alert('クリックした日付は'+ e.target.dataset.date + 'です')
+        })
 
         month++;
         if (month > 12){
@@ -100,10 +103,6 @@ function moveCalendar(e){
 
 document.querySelector('#prev').addEventListener('click', moveCalendar)
 document.querySelector('#next').addEventListener('click', moveCalendar)
-
-document.querySelector('.calendar_td').addEventListener('click', function(e){
-    alert('クリックした日付は'+ e.target.dataset.date + 'です')
-})
 
 
 showCalendar(year, month)
