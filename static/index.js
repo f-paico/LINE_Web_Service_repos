@@ -44,7 +44,7 @@ function createCalendar(year, month){
 
     // 曜日の行を作成
     for (let i = 0; i < weeks.length; i++){
-        calendarHtml += '<td>' + weeks[i] + '</td>'
+        calendarHtml += '<td width="10%">' + weeks[i] + '</td>'
     }
 
     for (let w = 0; w < 6; w++){
