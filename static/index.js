@@ -61,7 +61,7 @@ function createCalendar(year, month){
                 calendarHtml += `<td class="is-disabled" width="100/7%"><p style="height: 5%;">${num}</td>`
                 dayCount++;
             } else{
-                calendarHtml += `<td class="calendar_td" width="100/7%" data-date="${year}/${month}/${dayCount}"><p style="height: 5%;">${dayCount}</p><textarea name="memo" style="width: 95%; height: 70%; border: none;"></textarea></td>`
+                calendarHtml += `<td class="calendar_td" width="100/7%" data-date="${year}/${month}/${dayCount}"><p style="height: 5%;">${dayCount}</p><textarea class="memo" onchange="save()" style="width: 95%; height: 70%; border: none;"></textarea></td>`
                 dayCount++;
             }
         }
@@ -96,6 +96,17 @@ function moveCalendar(e){
     }
 
     showCalendar(year, month)
+}
+
+function save(){
+    const datelist = document.querySelectorAll('.calendar_td')
+    const memolist = document.querySelectorAll('.memo')
+    for (let i = 0; i < 90; i++){
+        if (memolist[i].value != ""){
+            console.log(datelist[i].dataset.date)
+            console.log(memolist[i].value)
+        }
+    }
 }
 
 document.querySelector('#prev').addEventListener('click', moveCalendar)
