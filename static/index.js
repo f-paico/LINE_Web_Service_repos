@@ -112,7 +112,7 @@ function save_to_cookie(){
             let date = datelist[i].dataset.date
             let memo = memolist[i].value
             memo = memo.replace(/\r?\n/g, ",,")
-            document.cookie = `${date}=${memo};expires=${data2}`
+            document.cookie = `${date}=` + encodeURIComponent(`${memo}`) +  `;expires=${data2}`
         }
     }
 }
@@ -123,7 +123,7 @@ function get_cookie_array(){
         let tmp = document.cookie.split('; ')
         for (let i = 0; i < tmp.length; i++){
             let data = tmp[i].split('=')
-            arr[data[0]] = data[1]
+            arr[data[0]] = decodeURIComponent(data[1])
         }
     }
     return arr
