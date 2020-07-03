@@ -61,7 +61,7 @@ function createCalendar(year, month){
                 calendarHtml += `<td class="is-disabled" width="100/7%"><p style="height: 5%;">${num}</td>`
                 dayCount++;
             } else{
-                calendarHtml += `<td class="calendar_td" width="100/7%" data-date="${year}/${month}/${dayCount}"><p style="height: 5%;">${dayCount}</p><textarea class="memo" onchange="save()" style="width: 95%; height: 70%; border: none;"></textarea></td>`
+                calendarHtml += `<td class="calendar_td" width="100/7%" data-date="${year}/${month}/${dayCount}"><p style="height: 5%;">${dayCount}</p><textarea class="memo" onchange="save_to_cookie()" style="width: 95%; height: 70%; border: none;"></textarea></td>`
                 dayCount++;
             }
         }
@@ -98,7 +98,7 @@ function moveCalendar(e){
     showCalendar(year, month)
 }
 
-function save(){
+function save_to_cookie(){
     const datelist = document.querySelectorAll('.calendar_td')
     const memolist = document.querySelectorAll('.memo')
     const limittime = 92
@@ -117,6 +117,36 @@ function save(){
     }
 }
 
+function get_cookie_array(){
+    let arr = new Array()
+    if (document.cookie != ""){
+        let tmp = document.cookie.split('; ')
+        for (let i = 0; i < tmp.length; i++){
+            let data = tmp[i].split('=')
+            arr[data[0]] = data[1]
+        }
+    }
+    return arr
+}
+
+function set_cookiedata_to_calendar(){
+    let arr = get_cookie_array()
+    let memolist = document.querySelectorAll('.memo')
+    let datelist = document.querySelectorAll('.calendar_td')
+    for (key in arr){
+        for (let i = 0; i < 90; i++){
+            if (key == datelist[i].dataset.date){
+                arr[key] = arr[key].replace(/,,/g, "\n")
+                memolist[i].value = arr[key]
+            }
+            else{
+                continue
+            }
+        }
+    }
+    
+}
+
 document.querySelector('#prev').addEventListener('click', moveCalendar)
 document.querySelector('#next').addEventListener('click', moveCalendar)
 document.querySelector('#calendar').addEventListener('click', function(e){
@@ -127,6 +157,7 @@ document.querySelector('#calendar').addEventListener('click', function(e){
 
 
 showCalendar(year, month)
+set_cookiedata_to_calendar()
 
 
 
