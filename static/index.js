@@ -54,14 +54,14 @@ function createCalendar(year, month){
             if (w == 0 && d < startDay){
                 // 1行目で1日の曜日の前
                 let num = lastMonthendDayCount - startDay + d + 1
-                calendarHtml += '<td class="is-disabled" width="100/7%">' + num + '</td>'
+                calendarHtml += `<td class="is-disabled" width="100/7%"><p style="height: 5%">${num}</td>`
             } else if (dayCount > endDayCount){
                 // 末尾の日数を超えた
                 let num = dayCount - endDayCount
-                calendarHtml += '<td class="is-disabled" width="100/7%">' + num + '</td>'
+                calendarHtml += `<td class="is-disabled" width="100/7%"><p style="height: 5%;">${num}</td>`
                 dayCount++;
             } else{
-                calendarHtml += `<td class="calendar_td" width="100/7%" data-date="${year}/${month}/${dayCount}">${dayCount}</td>`
+                calendarHtml += `<td class="calendar_td" width="100/7%" data-date="${year}/${month}/${dayCount}"><p style="height: 5%;">${dayCount}</p><textarea name="memo" style="width: 95%; height: 70%; border: none;"></textarea></td>`
                 dayCount++;
             }
         }
