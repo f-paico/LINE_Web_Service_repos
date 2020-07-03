@@ -30,5 +30,9 @@ def index():
     return render_template("index.html")
 
 if __name__ == '__main__':
-    bot = LineNotify(access_token='WNV9a94MM1TG8FBlziuWodI2zTphlnmzhzcGK9Jqu5Z')
-    bot.send_message(message='hello')
+    # pythonanywhereで実行するときには不要
+    app.debug = True # デバッグモード有効化
+    app.run(host='0.0.0.0', port=8080) # どこからでもアクセス可能に
+
+    #bot = LineNotify(access_token='WNV9a94MM1TG8FBlziuWodI2zTphlnmzhzcGK9Jqu5Z')
+    #bot.send_message(message='hello')

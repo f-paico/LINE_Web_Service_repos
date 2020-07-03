@@ -1,4 +1,4 @@
-const weeks = ['日','月' ,'火' ,'水' ,'木' ,'金' ,'土']
+const weeks = ['Sunday','Monday' ,'Tuesday' ,'Wednesday' ,'Thursday' ,'Friday' ,'Saturday']
 const date = new Date()
 let year = date.getFullYear()
 let month = date.getMonth() + 1
@@ -44,24 +44,24 @@ function createCalendar(year, month){
 
     // 曜日の行を作成
     for (let i = 0; i < weeks.length; i++){
-        calendarHtml += '<td height="10%">' + weeks[i] + '</td>'
+        calendarHtml += '<td height="4%" width="100/7%">' + weeks[i] + '</td>'
     }
 
     for (let w = 0; w < 6; w++){
-        calendarHtml += '<tr>'
+        calendarHtml += '<tr height="16%">'
 
         for (let d = 0; d < 7; d++){
             if (w == 0 && d < startDay){
                 // 1行目で1日の曜日の前
                 let num = lastMonthendDayCount - startDay + d + 1
-                calendarHtml += '<td class="is-disabled">' + num + '</td>'
+                calendarHtml += '<td class="is-disabled" width="100/7%">' + num + '</td>'
             } else if (dayCount > endDayCount){
                 // 末尾の日数を超えた
                 let num = dayCount - endDayCount
-                calendarHtml += '<td class="is-disabled">' + num + '</td>'
+                calendarHtml += '<td class="is-disabled" width="100/7%">' + num + '</td>'
                 dayCount++;
             } else{
-                calendarHtml += `<td class="calendar_td" data-date="${year}/${month}/${dayCount}">${dayCount}</td>`
+                calendarHtml += `<td class="calendar_td" width="100/7%" data-date="${year}/${month}/${dayCount}">${dayCount}</td>`
                 dayCount++;
             }
         }
