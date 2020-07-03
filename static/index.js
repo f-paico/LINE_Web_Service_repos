@@ -101,10 +101,18 @@ function moveCalendar(e){
 function save(){
     const datelist = document.querySelectorAll('.calendar_td')
     const memolist = document.querySelectorAll('.memo')
+    const limittime = 92
+    const data1 = new Date()
+    data1.setTime(data1.getTime() + limittime*24*60*60*1000)
+    const data2 = data1.toGMTString()
     for (let i = 0; i < 90; i++){
         if (memolist[i].value != ""){
             console.log(datelist[i].dataset.date)
             console.log(memolist[i].value)
+            let date = datelist[i].dataset.date
+            let memo = memolist[i].value
+            memo = memo.replace(/\r?\n/g, ",,")
+            document.cookie = `${date}=${memo};expires=${data2}`
         }
     }
 }
